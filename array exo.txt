@@ -1,0 +1,59 @@
+ALGORITHM Distinct_Elements
+
+VAR
+ TabA, TabB : ARRAY
+ size1, size2, i, j : INTEGER
+  found : BOOLEAN
+ sum : INTEGER
+
+BEGIN
+    sum := 0
+
+    WRITE("Enter size of first set")
+    READ(size1)
+
+    WRITE("Enter size of second set")
+    READ(size2)
+
+    WRITE("Enter elements of TabA")
+    FOR i FROM 1 TO size1 DO
+     READ(TabA[i])
+    END_FOR
+
+    WRITE("Enter elements of TabB")
+    FOR j FROM 1 TO size2 DO
+    READ(TabB[j])
+    END_FOR
+
+   
+    FOR i FROM 1 TO size1 DO
+        found := FALSE
+
+     FOR j FROM 1 TO size2 DO
+     IF TabA[i] = TabB[j] THEN
+     found := TRUE
+     END_IF
+     END_FOR
+
+    IF found = FALSE THEN
+     sum := sum + TabA[i]
+        END_IF
+    END_FOR
+
+    
+    FOR j FROM 1 TO size2 DO
+    found := FALSE
+
+     FOR i FROM 1 TO size1 DO
+     IF TabB[j] = TabA[i] THEN
+     found := TRUE
+   END_IF
+  END_FOR
+
+   IF found = FALSE THEN
+  sum := sum + TabB[j]
+ END_IF
+ END_FOR
+ WRITE("The sum is:", sum)
+
+END
